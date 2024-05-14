@@ -3,6 +3,8 @@ package org.uzum.iggytoto.java_algorithms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.*;
+
 /**
  * Given a n-ary tree, find its maximum depth.
  * <p>
@@ -58,6 +60,15 @@ public class Homework6_1 {
     }
 
     public int maxDepth(Node root) {
-        return -1;
+        if (root == null) {
+            throw new IllegalArgumentException();
+        }
+
+        int ans = 1;
+
+        for (Node child : root.children) {
+            ans = max(ans, 1 + maxDepth(child));
+        }
+        return ans;
     }
 }
